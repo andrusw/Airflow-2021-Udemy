@@ -68,8 +68,13 @@ airflow webserver &
 * Start Airflow’s webserver in background
 
 
+*Exit out and cd to airflow-section2:
+
 docker build -t airflow-basic .
 * Build a docker image from the Dockerfile in the current directory (airflow-materials/airflow-basic)  and name it airflow-basic
+
+docker image ls
+*to view docker images installed
 
 docker run --rm -d -p 8080:8080 airflow-basic
 
@@ -142,3 +147,12 @@ airflow tasks list example_python_operator
 
 airflow tasks test example_python_operator print_the_context 2021-01-01
 * Allow to test a task (print_the_context) from a given dag (example_python_operator here) without taking care of dependencies and past runs. Useful for debugging.
+
+
+Don't forget to stop your Airflow docker container with the commands
+
+docker ps
+
+Then copy the container id of airflow-basic and execute:
+
+docker stop <container_id
